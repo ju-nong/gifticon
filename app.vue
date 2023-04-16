@@ -1,21 +1,22 @@
 <template>
-    <div>어서오고</div>
-    <button @click="firstUpdate">업데이트</button>
+    <div>{{ user.isFirst ? "처음이다" : "아니다" }}</div>
 </template>
 <script setup>
 import { userStore } from "~/stores/user";
 import { getFirestore, collection, doc, updateDoc } from "@firebase/firestore";
 import { useCollection, useDocument } from "vuefire";
 
-const db = getFirestore();
+const user = userStore();
 
+const db = getFirestore();
 const docs = doc(collection(db, "gifticon"), "aE9hnKqUPt5bp757ycQg");
 const gifticon = useDocument(docs);
 
-console.log(gifticon.value.first);
+onMounted(() => {
+    const { first } = gifticon.value;
 
-async function firstUpdate() {
-    await updateDoc(docs, { first: false });
-    console.log(gifticon.value.first);
-}
+    user.setFirst(first);
+
+    updateDoc(docs, { first: !first });
+});
 </script>
