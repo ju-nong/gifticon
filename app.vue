@@ -1,4 +1,5 @@
 <template>
+    <!-- <NuxtPage /> -->
     <div>{{ user.isFirst ? "처음이다" : "아니다" }}</div>
 </template>
 <script setup>
@@ -18,5 +19,7 @@ onMounted(() => {
     user.setFirst(first);
 
     updateDoc(docs, { first: !first });
+
+    console.log("app.vue고요");
 });
 </script>
