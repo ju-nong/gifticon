@@ -1,11 +1,23 @@
-export const userStore = defineStore("counter", {
-    state: () => ({ first: false }),
+export const userStore = defineStore("user", {
+    state: () => ({
+        start: false, //
+        block: false,
+        load: false,
+    }),
     getters: {
-        isFirst: (state) => state.first,
+        getStart: (state) => state.start,
+        getBlock: (state) => state.block,
+        getLoad: (state) => state.load,
     },
     actions: {
-        setFirst(first) {
-            this.first = first;
+        setStart(flag) {
+            this.start = flag;
+        },
+        setBlock(flag) {
+            this.block = flag;
+        },
+        toggleLoad() {
+            this.load = !this.load;
         },
     },
 });

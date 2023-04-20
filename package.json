@@ -13,13 +13,19 @@
     },
     "dependencies": {
         "@firebase/app-types": "^0.9.0",
+        "@morev/vue-transitions": "^2.3.6",
+        "@nuxtjs/google-fonts": "^3.0.0",
         "@nuxtjs/tailwindcss": "^6.6.6",
         "@pinia/nuxt": "^0.4.8",
         "@vue/composition-api": "^1.7.1",
         "firebase": "^9.19.1",
         "firebase-admin": "^11.6.0",
+        "node-sass": "^8.0.0",
+        "nuxt-icon": "^0.3.3",
         "nuxt-vuefire": "^0.1.6",
         "pinia": "^2.0.34",
+        "sass": "^1.62.0",
+        "sass-loader": "^13.2.2",
         "vuefire": "^3.1.0"
     },
     "overrides": {

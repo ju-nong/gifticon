@@ -1,6 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    modules: ["@nuxtjs/tailwindcss", "nuxt-vuefire", "@pinia/nuxt"],
+    modules: [
+        "@nuxtjs/tailwindcss",
+        "nuxt-vuefire",
+        "@pinia/nuxt",
+        "@nuxtjs/google-fonts",
+        "@morev/vue-transitions/nuxt",
+        "nuxt-icon",
+    ],
+    css: ["~/assets/css/main.scss"],
     vuefire: {
         auth: true,
         config: {
@@ -20,5 +28,11 @@ export default defineNuxtConfig({
             "defineStore", // import { defineStore } from 'pinia'
             ["defineStore", "definePiniaStore"], // import { defineStore as definePiniaStore } from 'pinia'
         ],
+    },
+    googleFonts: {
+        families: {
+            "Nanum+Gothic": true,
+            download: true,
+        },
     },
 });
