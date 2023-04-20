@@ -2,7 +2,7 @@
     <TransitionSlide duration="300">
         <div
             v-if="visible"
-            class="flex fixed items-center max-w-[767px] text-white rounded-lg p-3 gap-x-3 top-4 pr-4 whitespace-pre-line z-10 shadow-md"
+            class="min-w-max flex fixed items-center text-white rounded-lg p-3 gap-x-3 top-4 left-[50%] translate-x-[-50%] pr-4 whitespace-pre-line z-10 shadow-md"
             :class="config[props.type].color"
         >
             <Icon :name="config[props.type].icon" size="1.5rem" />
