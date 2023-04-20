@@ -1,9 +1,11 @@
 <template>
     <div class="w-full h-full flex justify-center items-center p-[10rem]">
-        <SnackBar type="check" message="어서오고" />
-        <div
-            class="card-container w-full max-w-[767px] min-w-[300px] h-auto p-6"
-        >
+        <SnackBar
+            v-for="({ type, message }, index) in snackbar"
+            :type="type"
+            :message="message"
+        />
+        <div class="card-container w-full min-w-[300px] h-auto p-6">
             <div
                 v-if="load"
                 class="flex justify-center items-center min-h-[400px]"
@@ -16,11 +18,14 @@
 </template>
 
 <script setup>
-import { userStore } from "~/stores/user";
+import { userStore, snackbarStore } from "~/stores";
 import { storeToRefs } from "pinia";
 
 const user = userStore();
 const { load, block } = storeToRefs(user);
+
+const snackbars = snackbarStore();
+const { snackbar } = storeToRefs(snackbars);
 
 const router = useRouter();
 

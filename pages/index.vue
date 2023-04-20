@@ -26,7 +26,7 @@
 </template>
 
 <script setup>
-import { userStore, dbStore } from "~/stores";
+import { userStore, dbStore, snackbarStore } from "~/stores";
 import { storeToRefs } from "pinia";
 import { getFirestore, collection, doc, updateDoc } from "@firebase/firestore";
 import { useDocument } from "vuefire";
@@ -40,10 +40,16 @@ const { getData: data } = storeToRefs(db);
 const name = ref();
 const date = ref();
 
-async function handleStart() {
-    console.log(name.value);
-    console.log(date.value);
+const snackbar = snackbarStore();
 
+async function handleStart() {
+    // console.log(name.value);
+    // console.log(date.value);
+
+    snackbar.addSnackbar({
+        type: "check",
+        message: "오 ss생일 축하해",
+    });
     // await db.setUse();
 }
 
