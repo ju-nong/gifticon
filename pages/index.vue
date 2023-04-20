@@ -23,7 +23,7 @@
         </label>
         <button
             class="p-2 bg-[#1A88E9] text-xl font-semibold text-white rounded-lg mt-2"
-            @click="handleUse"
+            @click="handleLogin"
         >
             드가자
         </button>
@@ -49,25 +49,45 @@ const vDate = ref();
 
 const snackbar = snackbarStore();
 
-async function handleUse() {
+const checkEmpty = () => vName.value === "" || vDate.value === "";
+
+function checkData() {
+    const isEmpty = checkEmpty();
+
+    if (isEmpty) {
+        return {
+            type: "danger",
+            message: "이름이랑 생년월일 다 적어라 ⌨️",
+        };
+    }
+
     const { birthday, name, login } = data.value;
 
-    if (vName.value === name && vDate.value === birthday && !login) {
-        user.setLogin(true);
+    if (vName.value === name && vDate.value === birthday) {
+        if (!login) {
+            return { type: "check", message: "🎉 와 생일 축하해! 🎉" };
+        } else {
+            return { type: "danger", message: "이미 한 번 받은거임 ✋" };
+        }
+    } else {
+        return { type: "danger", message: "너 생일 아니잖아 🔫" };
+    }
+}
 
-        snackbar.addSnackbar({
-            type: "check",
-            message: "🎉 와 생일 축하해! 🎉",
-        });
+async function handleLogin() {
+    const { type, message } = checkData();
+
+    snackbar.addSnackbar({
+        type,
+        message,
+    });
+
+    if (type === "check") {
+        user.setLogin(true);
 
         await db.updateDB("login", true);
 
         router.replace("/sub");
-    } else {
-        snackbar.addSnackbar({
-            type: "danger",
-            message: "저리가",
-        });
     }
 }
 
