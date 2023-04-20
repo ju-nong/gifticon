@@ -21,12 +21,7 @@
                 @keyup.enter="handleUse"
             />
         </label>
-        <button
-            class="p-2 bg-[#1A88E9] text-xl font-semibold text-white rounded-lg mt-2"
-            @click="handleLogin"
-        >
-            드가자
-        </button>
+        <button class="primary-button mt-2" @click="handleLogin">드가자</button>
     </div>
 </template>
 
@@ -85,9 +80,9 @@ async function handleLogin() {
     if (type === "check") {
         user.setLogin(true);
 
-        await db.updateDB("login", true);
+        // await db.updateDB("login", true);
 
-        router.replace("/sub");
+        router.replace("/intro");
     }
 }
 

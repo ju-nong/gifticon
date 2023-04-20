@@ -9,9 +9,24 @@
                     불가능해요</span
                 >
             </li>
+            <li>
+                <strong>뒤로가기도 하지 마세요!</strong>
+                <span
+                    >현재 로그인 정보가 Session에 저장되어 있어서 새로고침하면
+                    안 돼요</span
+                >
+            </li>
+            <li>
+                <strong>기회는 한 번이에요!</strong>
+                <span>생일선물을 여러개 받을 순 없겠죠?</span>
+            </li>
+            <li>
+                <NuxtLink class="primary-button" to="/choose" replace>
+                    🚩 시작!
+                </NuxtLink>
+            </li>
         </ul>
     </div>
-    <NuxtLink to="/">메인</NuxtLink>
 </template>
 
 <script setup>
@@ -33,15 +48,16 @@ onMounted(() => {
         flex-direction: column;
 
         row-gap: 2rem;
-
         li {
             display: flex;
             flex-direction: column;
 
             strong {
-                font-size: 1.5rem;
+                font-size: 16px;
             }
             span {
+                font-size: 14px;
+                color: #888;
                 margin: 0.5rem 0 0 0.5rem;
             }
         }

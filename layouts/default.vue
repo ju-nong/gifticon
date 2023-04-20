@@ -1,10 +1,11 @@
 <template>
+    <SnackBar
+        v-for="({ type, message }, index) in snackbar"
+        :type="type"
+        :message="message"
+    />
+    <Modal />
     <div class="w-full h-full flex justify-center items-center p-[10rem]">
-        <SnackBar
-            v-for="({ type, message }, index) in snackbar"
-            :type="type"
-            :message="message"
-        />
         <div
             class="card-container w-full min-w-[300px] max-w-[500px] h-auto p-6"
         >

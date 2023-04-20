@@ -32,7 +32,7 @@ function addDangerSnackbar() {
 
 // 접근이 막혔을 때
 watch(block, (to, from) => {
-    if (!fomr && to) {
+    if (!from && to) {
         addDangerSnackbar();
     }
 });
