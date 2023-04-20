@@ -2,14 +2,11 @@
     <TransitionSlide duration="300">
         <div
             v-if="visible"
-            class="flex fixed items-center min-w-[200px] max-w-[767px] text-white rounded-lg p-3 gap-x-3 top-4 pr-4 whitespace-pre-line z-10"
+            class="flex fixed items-center max-w-[767px] text-white rounded-lg p-3 gap-x-3 top-4 pr-4 whitespace-pre-line z-10 shadow-md"
             :class="config[props.type].color"
         >
             <Icon :name="config[props.type].icon" size="1.5rem" />
             {{ props.message }}
-            <!-- <button class="absolute top-0 right-1 h-auto">
-                <Icon name="material-symbols:close" />
-            </button> -->
         </div>
     </TransitionSlide>
 </template>
@@ -28,7 +25,7 @@ const config = reactive({
         color: "bg-emerald-300",
     },
     danger: {
-        icon: "material-symbols:check-circle-rounded",
+        icon: "ph:warning-circle-fill",
         color: "bg-red-400",
     },
 });

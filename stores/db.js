@@ -19,8 +19,8 @@ export const dbStore = defineStore("db", {
             );
             this.data = useDocument(this.docs);
         },
-        async setUse() {
-            await updateDoc(this.docs, { use: true });
+        async updateDB(key, value) {
+            await updateDoc(this.docs, { [key]: value });
         },
     },
 });

@@ -9,16 +9,21 @@
             <input
                 type="text"
                 placeholder="그래 니 이름 적어라"
-                v-model.trim="name"
+                v-model.trim="vName"
             />
         </label>
         <label>
             <p>생년월일</p>
-            <input type="text" placeholder="YYMMDD" v-model.trim="date" />
+            <input
+                type="text"
+                placeholder="YYMMDD"
+                v-model.trim="vDate"
+                @keyup.enter="handleUse"
+            />
         </label>
         <button
             class="p-2 bg-[#1A88E9] text-xl font-semibold text-white rounded-lg mt-2"
-            @click="handleStart"
+            @click="handleUse"
         >
             드가자
         </button>
@@ -31,33 +36,42 @@ import { storeToRefs } from "pinia";
 import { getFirestore, collection, doc, updateDoc } from "@firebase/firestore";
 import { useDocument } from "vuefire";
 
+const router = useRouter();
+
 const user = userStore();
-const { block } = storeToRefs(user);
+const {} = storeToRefs(user);
 
 const db = dbStore();
 const { getData: data } = storeToRefs(db);
 
-const name = ref();
-const date = ref();
+const vName = ref();
+const vDate = ref();
 
 const snackbar = snackbarStore();
 
-async function handleStart() {
-    // console.log(name.value);
-    // console.log(date.value);
+async function handleUse() {
+    const { birthday, name, login } = data.value;
 
-    snackbar.addSnackbar({
-        type: "check",
-        message: "오 ss생일 축하해",
-    });
-    // await db.setUse();
+    if (vName.value === name && vDate.value === birthday && !login) {
+        user.setLogin(true);
+
+        snackbar.addSnackbar({
+            type: "check",
+            message: "🎉 와 생일 축하해! 🎉",
+        });
+
+        await db.updateDB("login", true);
+
+        router.replace("/sub");
+    } else {
+        snackbar.addSnackbar({
+            type: "danger",
+            message: "저리가",
+        });
+    }
 }
 
-onMounted(() => {
-    if (block.value) {
-        user.setBlock(false);
-    }
-});
+onMounted(() => {});
 </script>
 
 <style lang="scss">

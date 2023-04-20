@@ -5,7 +5,9 @@
             :type="type"
             :message="message"
         />
-        <div class="card-container w-full min-w-[300px] h-auto p-6">
+        <div
+            class="card-container w-full min-w-[300px] max-w-[500px] h-auto p-6"
+        >
             <div
                 v-if="load"
                 class="flex justify-center items-center min-h-[400px]"
@@ -22,7 +24,7 @@ import { userStore, snackbarStore } from "~/stores";
 import { storeToRefs } from "pinia";
 
 const user = userStore();
-const { load, block } = storeToRefs(user);
+const { load } = storeToRefs(user);
 
 const snackbars = snackbarStore();
 const { snackbar } = storeToRefs(snackbars);
@@ -34,12 +36,6 @@ watch(load, (to, from) => {
         setTimeout(() => {
             user.toggleLoad();
         }, 500);
-    }
-});
-
-watch(block, (to, from) => {
-    if (!from && to) {
-        router.replace("/");
     }
 });
 </script>
