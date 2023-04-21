@@ -2,12 +2,15 @@
     <h1 class="title">와 축하해!</h1>
     <div class="pick-container text-center">
         <div class="p-4">
-            <a :href="`/images/${data.list[pick]}`" download="준용이의생일선물">
+            <a
+                :href="`/images/${data?.list[pick]}`"
+                download="준용이의생일선물"
+            >
                 <!-- <img
                     src="https://mblogthumb-phinf.pstatic.net/MjAyMjAxMzFfNzUg/MDAxNjQzNjAzODY4Njgz.3W2tbeaRPcJyYRBZ1lBJxr8dxwakwvI8KNZNwKfTcp8g.TXuC2BmjbaXbdDy-PLoE7-nr3q8iJ0oP455pWAa4-A4g.JPEG.superpig518/1643603485363.jpg?type=w800"
                     alt=""
                 /> -->
-                <img :src="`/images/${data.list[pick]}`" alt="기프티콘" />
+                <img :src="`/images/${data?.list[pick]}`" alt="기프티콘" />
             </a>
         </div>
         <p class="text-xs">위에 이미지를 클릭해서 다운로드 받을 수 있어</p>
@@ -53,6 +56,10 @@ function handleSend() {
 
     router.replace("/");
 }
+
+onMounted(() => {
+    user.setLogin(false);
+});
 </script>
 
 <style lang="scss">

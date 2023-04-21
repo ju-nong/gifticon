@@ -22,7 +22,7 @@ const snackbar = snackbarStore();
 function addDangerSnackbar() {
     snackbar.addSnackbar({
         type: "danger",
-        message: "님아 이상한 짓 하지마세요 😤",
+        message: "응 못 뚫어",
     });
 
     page.setBlock(false);
