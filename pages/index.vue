@@ -1,16 +1,9 @@
 <template>
-    <h1 class="title">
-        어 그래 누군진 모르겠지만<br />
-        생일 축하한다🎉
-    </h1>
+    <h1 class="title">와 생일 축하해~🎉</h1>
     <div class="form-container flex flex-col p-2 mt-2">
         <label>
             <p>이름</p>
-            <input
-                type="text"
-                placeholder="그래 니 이름 적어라"
-                v-model.trim="vName"
-            />
+            <input type="text" placeholder="너 이름" v-model.trim="vName" />
         </label>
         <label>
             <p>생년월일</p>
@@ -21,7 +14,9 @@
                 @keyup.enter="handleUse"
             />
         </label>
-        <button class="primary-button mt-2" @click="handleLogin">드가자</button>
+        <button class="primary-button mt-2" @click="handleLogin">
+            🎁 받기
+        </button>
     </div>
 </template>
 
@@ -44,15 +39,13 @@ const vDate = ref();
 
 const snackbar = snackbarStore();
 
-const checkEmpty = () => vName.value === "" || vDate.value === "";
+const checkEmpty = computed(() => !vName.value?.length || !vDate.value?.length);
 
 function checkData() {
-    const isEmpty = checkEmpty();
-
-    if (isEmpty) {
+    if (checkEmpty.value) {
         return {
             type: "danger",
-            message: "이름이랑 생년월일 다 적어라 ⌨️",
+            message: "이름이랑 생년월일 다 적어",
         };
     }
 
@@ -62,10 +55,10 @@ function checkData() {
         if (!login) {
             return { type: "check", message: "🎉 와 생일 축하해! 🎉" };
         } else {
-            return { type: "danger", message: "이미 한 번 받은거임 ✋" };
+            return { type: "danger", message: "이미 받았잖아 ✋" };
         }
     } else {
-        return { type: "danger", message: "너 생일 아니잖아 🔫" };
+        return { type: "danger", message: "너 생일 아니잖아!" };
     }
 }
 
