@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-import { snackbarStore, modalStore } from "~/stores";
+import { snackbarStore, modalStore, userStore } from "~/stores";
 import confetti from "canvas-confetti";
 
 const pick = ref(-1);
@@ -42,11 +42,15 @@ const modal = modalStore();
 
 const snackbar = snackbarStore();
 
+const user = userStore();
+
+const router = useRouter();
+
 function randomEmojis(length) {
     if (picking.value) {
         snackbar.addSnackbar({
             type: "danger",
-            message: "지금 랜덤 선택 중이잖아! 🎰",
+            message: "지금 랜덤 선택 중이잖아 🎰",
         });
 
         return list.value;
@@ -100,6 +104,12 @@ function randomPick() {
     }, 3000);
 }
 
+function movePick() {
+    user.setPick(pick.value);
+
+    router.replace("/pick");
+}
+
 function reCheckModal4() {
     modal.setModal(
         {
@@ -107,7 +117,7 @@ function reCheckModal4() {
             color: "#52de47",
         },
         "진짜 선택한다?",
-        null,
+        movePick,
         "ㅇㅇ",
     );
 }
@@ -151,7 +161,7 @@ function handlePick() {
     if (picking.value) {
         snackbar.addSnackbar({
             type: "danger",
-            message: "지금 랜덤 선택 중이잖아! 🎰",
+            message: "지금 랜덤 선택 중이잖아 🎰",
         });
 
         return;
@@ -160,7 +170,7 @@ function handlePick() {
     if (pick.value === -1) {
         snackbar.addSnackbar({
             type: "danger",
-            message: "생일선물 안 받을거에요? 🎯",
+            message: "생일선물 받기 싫지? 🎯",
         });
 
         return;

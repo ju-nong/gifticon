@@ -6,7 +6,7 @@
                 @click="modal.hide"
             ></div>
             <div
-                class="modal-container max-w-[400px] min-w-[300px] p-7 pb-10 bg-white rounded-lg relative z-[100] top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] flex flex-col items-center"
+                class="modal-container max-w-[400px] min-w-[310px] p-7 pb-10 bg-white rounded-lg relative z-[100] top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] flex flex-col items-center"
             >
                 <button
                     class="close text-4xl text-[#c0c5cb] flex self-end"
@@ -21,7 +21,7 @@
                     :name="icon.name"
                     :color="icon.color"
                 />
-                <p class="mt-4 mb-10 text-[18px] font-semibold">
+                <p class="mt-4 mb-10 text-[18px] font-semibold text-center">
                     {{ content }}
                 </p>
                 <button
@@ -59,6 +59,7 @@ function handleAccept() {
 @media screen and (max-width: 767px) {
     .modal-container {
         max-width: 60vw;
+        padding: 1.25rem 1.25rem 2.25rem;
         .close {
             font-size: 20px;
         }
