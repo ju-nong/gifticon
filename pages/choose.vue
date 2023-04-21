@@ -1,8 +1,8 @@
 <template>
     <h1 class="title">자 선택해</h1>
-    <div class="choose-container flex gap-4 py-4">
-        <NuxtLink class="inline-box" to="/" replace>
-            <h2>문제 🤔</h2>
+    <div class="choose-container flex gap-6 py-6">
+        <NuxtLink class="inline-box" to="/description" replace>
+            <h2>시험 🤔</h2>
             <p>정답률에 따라 생일선물이 달라져</p>
         </NuxtLink>
         <button class="inline-box" @click="handleReCheck">
@@ -30,7 +30,7 @@ function handleReCheck() {
             color: "#F7E20C",
         },
         " 진짜 랜덤 고를거야?",
-        moveRandom,
+        moveRandom
     );
 }
 </script>
