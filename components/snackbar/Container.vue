@@ -1,5 +1,5 @@
 <template>
-    <SnackBar
+    <SnackbarItem
         v-for="({ type, message }, index) in snackbar"
         :type="type"
         :message="message"
@@ -8,6 +8,7 @@
 
 <script setup>
 import { snackbarStore } from "~/stores";
+import { storeToRefs } from "pinia";
 const snackbars = snackbarStore();
 const { snackbar } = storeToRefs(snackbars);
 </script>
