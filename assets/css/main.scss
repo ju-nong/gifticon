@@ -90,6 +90,28 @@ body {
     }
 }
 
+.list-container {
+    display: flex;
+    flex-direction: column;
+
+    padding: 1rem 0;
+
+    row-gap: 2rem;
+    li {
+        display: flex;
+        flex-direction: column;
+
+        strong {
+            font-size: 16px;
+        }
+        span {
+            font-size: 14px;
+            color: #888;
+            margin: 0.5rem 0 0 0.5rem;
+        }
+    }
+}
+
 .loader {
     width: 48px;
     height: 48px;

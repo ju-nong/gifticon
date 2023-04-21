@@ -1,6 +1,6 @@
 <template>
-    <h1 class="title">📄 꼭 기억해!</h1>
-    <ul class="list-container py-4">
+    <h1 class="title">💁 시험 안내</h1>
+    <ul class="list-container">
         <li>
             <strong>절대 새로고침을 하지 마!</strong>
             <span
