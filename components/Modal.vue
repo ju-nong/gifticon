@@ -28,7 +28,7 @@
                     class="primary-button small"
                     @click="modal.actionCallback"
                 >
-                    확인
+                    {{ buttonText }}
                 </button>
             </div>
         </div>
@@ -40,7 +40,7 @@ import { storeToRefs } from "pinia";
 import { modalStore } from "~/stores";
 
 const modal = modalStore();
-const { visible, icon, content } = storeToRefs(modal);
+const { visible, icon, content, buttonText } = storeToRefs(modal);
 
 function handleAccept() {
     callback.value();
