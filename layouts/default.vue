@@ -1,9 +1,5 @@
 <template>
-    <SnackBar
-        v-for="({ type, message }, index) in snackbar"
-        :type="type"
-        :message="message"
-    />
+    <SnackBarContainer />
     <Modal />
     <div class="w-full h-full flex justify-center items-center p-[10rem]">
         <div
@@ -21,21 +17,18 @@
 </template>
 
 <script setup>
-import { userStore, snackbarStore } from "~/stores";
+import { pageStore } from "~/stores";
 import { storeToRefs } from "pinia";
 
-const user = userStore();
-const { load } = storeToRefs(user);
-
-const snackbars = snackbarStore();
-const { snackbar } = storeToRefs(snackbars);
+const page = pageStore();
+const { load } = storeToRefs(page);
 
 const router = useRouter();
 
 watch(load, (to, from) => {
     if (!from && to) {
         setTimeout(() => {
-            user.toggleLoad();
+            page.toggleLoad();
         }, 500);
     }
 });

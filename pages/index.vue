@@ -34,7 +34,7 @@ import { useDocument } from "vuefire";
 const router = useRouter();
 
 const user = userStore();
-const {} = storeToRefs(user);
+const { login } = storeToRefs(user);
 
 const db = dbStore();
 const { getData: data } = storeToRefs(db);

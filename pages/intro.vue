@@ -29,17 +29,7 @@
     </div>
 </template>
 
-<script setup>
-import { userStore } from "~/stores/user";
-import { storeToRefs } from "pinia";
-
-const user = userStore();
-const { block } = storeToRefs(user);
-
-onMounted(() => {
-    // console.log(block.value);
-});
-</script>
+<script setup></script>
 
 <style lang="scss">
 .intro-container {

@@ -7,15 +7,15 @@
 definePageMeta({
     middleware: "check",
 });
-import { userStore, dbStore, snackbarStore } from "~/stores";
+import { pageStore, dbStore, snackbarStore } from "~/stores";
 import { storeToRefs } from "pinia";
 
 const router = useRouter();
 
 const db = dbStore();
 
-const user = userStore();
-const { block } = storeToRefs(user);
+const page = pageStore();
+const { block } = storeToRefs(page);
 
 const snackbar = snackbarStore();
 
@@ -25,7 +25,7 @@ function addDangerSnackbar() {
         message: "님아 이상한 짓 하지마세요 😤",
     });
 
-    user.setBlock(false);
+    page.setBlock(false);
 
     router.replace("/");
 }
