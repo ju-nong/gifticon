@@ -1,11 +1,11 @@
 <template>
     <h1 class="title">자 선택해</h1>
-    <div class="choose-container gap-4 flex py-4">
-        <NuxtLink to="/" replace>
+    <div class="choose-container flex gap-4 py-4">
+        <NuxtLink class="inline-box" to="/" replace>
             <h2>문제 🤔</h2>
             <p>정답률에 따라 생일선물이 달라져</p>
         </NuxtLink>
-        <button @click="handleReCheck">
+        <button class="inline-box" @click="handleReCheck">
             <h2>랜덤 🤩</h2>
             <p>그런거 필요 없고 그냥 랜덤임 ㅅㄱ</p>
         </button>
@@ -13,7 +13,26 @@
 </template>
 
 <script setup>
-function handleReCheck() {}
+import { modalStore } from "~/stores";
+
+const router = useRouter();
+
+const modal = modalStore();
+
+function moveRandom() {
+    router.replace("/random");
+}
+
+function handleReCheck() {
+    modal.setModal(
+        {
+            name: "game-icons:perspective-dice-six-faces-random",
+            color: "#F7E20C",
+        },
+        " 진짜 랜덤 고를거야?",
+        moveRandom,
+    );
+}
 </script>
 
 <style lang="scss">
@@ -23,19 +42,9 @@ function handleReCheck() {}
         flex: 1 1 100%;
         padding: 0.5rem;
 
-        transition: transform 0.5s;
-
-        background: rgba(255, 255, 255, 0.25);
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
         border-radius: 10px;
 
         text-align: center;
-
-        &:hover {
-            transform: translateY(-5px);
-        }
 
         h2 {
             font-size: 1.25rem;
