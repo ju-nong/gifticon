@@ -14,10 +14,10 @@
                 v-for="(item, index) in list"
                 :key="index"
                 class="inline-box w-[100px] h-[100px] cursor-pointer text-center leading-[100px] text-4xl rounded-xl"
-                :class="pick === index ? 'pick' : ''"
-                @click="pick = pick === index ? -1 : index"
+                :class="pick === item.number ? 'pick' : ''"
+                @click="pick = pick === item.number ? -1 : item.number"
             >
-                {{ item }}
+                {{ item.emoji }}
             </li>
         </ul>
         <div
@@ -25,28 +25,72 @@
         >
             <button @click="handlePick">🎯 선택 완료</button>
             <button @click="randomPick">🎰 랜덤 선택</button>
-            <button @click="list = randomEmojis(3)">🎩 다시 뽑기</button>
+            <button @click="list = newList()">🎩 다시 뽑기</button>
         </div>
     </div>
 </template>
 
 <script setup>
-import { snackbarStore, modalStore, userStore } from "~/stores";
+import { snackbarStore, modalStore, userStore, dbStore } from "~/stores";
 import confetti from "canvas-confetti";
+import { storeToRefs } from "pinia";
 
 const pick = ref(-1);
 const picking = ref(false);
 const randomInterval = ref(false);
 
-const modal = modalStore();
-
-const snackbar = snackbarStore();
-
-const user = userStore();
-
 const router = useRouter();
 
-function randomEmojis(length) {
+const modal = modalStore();
+const snackbar = snackbarStore();
+const user = userStore();
+const db = dbStore();
+const { data } = storeToRefs(db);
+
+const gifitconLength = computed(() => data?.value?.list?.length ?? 0);
+
+const getRandomIndex = () => Math.floor(Math.random() * gifitconLength.value);
+
+function getRandomEmojis() {
+    let emojis = [];
+    const emojiRangeStart = 0x1f600;
+    const emojiRangeEnd = 0x1f64f;
+
+    for (let i = 0; i < gifitconLength.value; i++) {
+        const randomEmoji = String.fromCodePoint(
+            Math.floor(
+                Math.random() * (emojiRangeEnd - emojiRangeStart) +
+                    emojiRangeStart,
+            ),
+        );
+
+        if (emojis.includes(randomEmoji)) {
+            i = i - 1 === -1 ? 0 : i - 1;
+        } else {
+            emojis.push(randomEmoji);
+        }
+    }
+
+    return emojis;
+}
+
+function getRandomNumbers() {
+    const numbers = [];
+
+    for (let i = 0; i < gifitconLength.value; i++) {
+        const randomNumber = getRandomIndex();
+
+        if (numbers.includes(randomNumber)) {
+            i = i - 1 === -1 ? 0 : i - 1;
+        } else {
+            numbers.push(randomNumber);
+        }
+    }
+
+    return numbers;
+}
+
+function newList() {
     if (picking.value) {
         snackbar.addSnackbar({
             type: "danger",
@@ -57,29 +101,23 @@ function randomEmojis(length) {
     }
 
     pick.value = -1;
-    let emojis = [];
-    const emojiRangeStart = 0x1f600;
-    const emojiRangeEnd = 0x1f64f;
 
-    for (let i = 0; i < length; i++) {
-        const randomEmoji = String.fromCodePoint(
-            Math.floor(
-                Math.random() * (emojiRangeEnd - emojiRangeStart) +
-                    emojiRangeStart,
-            ),
-        );
+    const emojis = getRandomEmojis();
+    const numbers = getRandomNumbers();
 
-        if (emojis.includes(randomEmoji)) {
-            i--;
-        } else {
-            emojis.push(randomEmoji);
-        }
+    const result = [];
+
+    for (let i = 0; i < gifitconLength.value; i++) {
+        result.push({
+            emoji: emojis[i],
+            number: numbers[i],
+        });
     }
 
-    return emojis;
+    return result;
 }
 
-const list = ref(randomEmojis(3));
+const list = ref(newList());
 
 function randomPick() {
     if (picking.value) {
@@ -89,7 +127,7 @@ function randomPick() {
     picking.value = true;
 
     randomInterval.value = setInterval(() => {
-        pick.value = Math.floor(Math.random() * 3);
+        pick.value = getRandomIndex();
     }, 100);
 
     setTimeout(() => {
