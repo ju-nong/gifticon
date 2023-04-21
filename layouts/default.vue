@@ -1,7 +1,7 @@
 <template>
     <SnackbarContainer />
     <Modal />
-    <div class="w-full h-full flex justify-center items-center p-[10rem]">
+    <main class="w-full h-full flex justify-center items-center p-[10rem]">
         <div
             class="card-container w-full min-w-[300px] max-w-[500px] h-auto p-6"
         >
@@ -13,7 +13,7 @@
             </div>
             <slot v-else />
         </div>
-    </div>
+    </main>
     <Copyright />
 </template>
 
@@ -35,4 +35,10 @@ watch(load, (to, from) => {
 });
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+@media screen and (max-width: 767px) {
+    main {
+        padding: 4rem !important;
+    }
+}
+</style>
