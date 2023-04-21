@@ -1,24 +1,24 @@
 <template>
-    <h1 class="title">📄 꼭 숙지하세요!</h1>
+    <h1 class="title">📄 꼭 기억해!</h1>
     <div class="intro-container">
         <ul class="py-4">
             <li>
-                <strong>절대 새로고침을 하지 마세요!</strong>
+                <strong>절대 새로고침을 하지 마!</strong>
                 <span
-                    >방금 이름이랑 생년월일을 입력한 이후로, 더이상 이용이
-                    불가능해요</span
+                    >방금 이름이랑 생년월일을 입력한 이후로, 더 이상 이용할 수
+                    없음</span
                 >
             </li>
             <li>
-                <strong>뒤로가기도 하지 마세요!</strong>
+                <strong>뒤로가기도 하지 마!</strong>
                 <span
                     >현재 로그인 정보가 Session에 저장되어 있어서 새로고침하면
-                    안 돼요</span
+                    안돼</span
                 >
             </li>
             <li>
-                <strong>기회는 한 번이에요!</strong>
-                <span>생일선물을 여러개 받을 순 없겠죠?</span>
+                <strong>기회는 한 번이야!</strong>
+                <span>생일선물을 여러 개 받을 순 없잖아?</span>
             </li>
             <li>
                 <NuxtLink class="primary-button" to="/choose" replace>
