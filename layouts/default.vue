@@ -38,7 +38,7 @@ watch(load, (to, from) => {
 <style lang="scss">
 @media screen and (max-width: 767px) {
     main {
-        padding: 4rem !important;
+        padding: 6rem !important;
     }
 }
 </style>

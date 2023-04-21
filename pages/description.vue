@@ -2,26 +2,20 @@
     <h1 class="title">💁 시험 안내</h1>
     <ul class="list-container">
         <li>
-            <strong>절대 새로고침을 하지 마!</strong>
-            <span
-                >방금 이름이랑 생년월일을 입력한 이후로, 더 이상 이용할 수
-                없음</span
-            >
+            <strong>문제는 이준용 맘대로</strong>
+            <span>진짜 나 맘대로 문제 냈음 ㅅㄱ</span>
         </li>
         <li>
-            <strong>뒤로가기도 하지 마!</strong>
-            <span
-                >현재 로그인 정보가 Session에 저장되어 있어서 새로고침하면
-                안돼</span
-            >
+            <strong>문제 유형</strong>
+            <span>객관식이 많고 주관식은 한두 개 있을 거임</span>
         </li>
         <li>
-            <strong>기회는 한 번이야!</strong>
-            <span>생일선물을 여러 개 받을 순 없잖아?</span>
+            <strong>생일선물</strong>
+            <span>문제 맞힐수록 더 좋은 생일선물을 받을 수 있어</span>
         </li>
         <li>
-            <NuxtLink class="primary-button" to="/choose" replace>
-                🚩 시작!
+            <NuxtLink class="primary-button" to="/step/1" replace>
+                📝 시험 시작!
             </NuxtLink>
         </li>
     </ul>
