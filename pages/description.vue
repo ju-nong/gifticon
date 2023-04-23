@@ -14,7 +14,7 @@
             <span>문제 맞힐수록 더 좋은 생일선물을 받을 수 있어</span>
         </li>
         <li>
-            <NuxtLink class="primary-button" to="/step/1" replace>
+            <NuxtLink class="primary-button" to="/exam/1" replace>
                 📝 시험 시작!
             </NuxtLink>
         </li>

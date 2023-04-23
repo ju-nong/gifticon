@@ -4,9 +4,10 @@
 
 <script setup>
 import { storeToRefs } from "pinia";
-import { stepStore } from "~/stores";
+import { examStore } from "~/stores";
 
-const step = stepStore();
+const exam = examStore();
+const { step } = storeToRefs(exam);
 </script>
 
 <style lang="scss"></style>

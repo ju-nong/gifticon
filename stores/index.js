@@ -3,6 +3,6 @@ import { dbStore } from "./db";
 import { snackbarStore } from "./snackbar";
 import { pageStore } from "./page";
 import { modalStore } from "./modal";
-import { stepStore } from "./step";
+import { examStore } from "./exam";
 
-export { userStore, dbStore, snackbarStore, pageStore, modalStore, stepStore };
+export { userStore, dbStore, snackbarStore, pageStore, modalStore, examStore };
