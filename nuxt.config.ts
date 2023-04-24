@@ -9,6 +9,13 @@ export default defineNuxtConfig({
         "nuxt-icon",
     ],
     css: ["~/assets/css/main.scss"],
+    app: {
+        head: {
+            htmlAttrs: {
+                lang: "ko",
+            },
+        },
+    },
     vuefire: {
         auth: true,
         config: {
