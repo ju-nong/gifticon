@@ -73,7 +73,7 @@ async function handleLogin() {
     if (type === "check") {
         user.setLogin(true);
 
-        // await db.updateDB("login", true);
+        await db.updateDB("login", true);
 
         router.replace("/intro");
     }

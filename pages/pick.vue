@@ -6,10 +6,6 @@
                 :href="`/images/${data?.list[pick]}`"
                 download="준용이의생일선물"
             >
-                <!-- <img
-                    src="https://mblogthumb-phinf.pstatic.net/MjAyMjAxMzFfNzUg/MDAxNjQzNjAzODY4Njgz.3W2tbeaRPcJyYRBZ1lBJxr8dxwakwvI8KNZNwKfTcp8g.TXuC2BmjbaXbdDy-PLoE7-nr3q8iJ0oP455pWAa4-A4g.JPEG.superpig518/1643603485363.jpg?type=w800"
-                    alt=""
-                /> -->
                 <img
                     :src="`/images/${data?.list[pick]}`"
                     alt="기프티콘"
@@ -72,6 +68,7 @@ function handleLoad() {
 
 onMounted(() => {
     user.setLogin(false);
+    db.updateDB("pick", pick.value);
 });
 </script>
 

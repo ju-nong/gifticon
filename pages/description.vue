@@ -14,6 +14,13 @@
             <span>문제 맞힐수록 더 좋은 생일선물을 받을 수 있어</span>
         </li>
         <li>
+            <strong>주의할 점</strong>
+            <span
+                >다른 페이지나 앱 열어서 컨닝하면 Session 날라가서 바로 종료 될
+                수 있음</span
+            >
+        </li>
+        <li>
             <NuxtLink class="primary-button" to="/exam/1" replace>
                 📝 시험 시작!
             </NuxtLink>

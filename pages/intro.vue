@@ -16,6 +16,10 @@
             >
         </li>
         <li>
+            <strong>다른 앱으로 이동</strong>
+            <span>Session이 종료돼서 기회가 날라갈 수 있어</span>
+        </li>
+        <li>
             <strong>기회는 한 번이야!</strong>
             <span>생일선물을 여러 개 받을 순 없잖아?</span>
         </li>
