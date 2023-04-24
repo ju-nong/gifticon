@@ -10,7 +10,11 @@
                     src="https://mblogthumb-phinf.pstatic.net/MjAyMjAxMzFfNzUg/MDAxNjQzNjAzODY4Njgz.3W2tbeaRPcJyYRBZ1lBJxr8dxwakwvI8KNZNwKfTcp8g.TXuC2BmjbaXbdDy-PLoE7-nr3q8iJ0oP455pWAa4-A4g.JPEG.superpig518/1643603485363.jpg?type=w800"
                     alt=""
                 /> -->
-                <img :src="`/images/${data?.list[pick]}`" alt="기프티콘" />
+                <img
+                    :src="`/images/${data?.list[pick]}`"
+                    alt="기프티콘"
+                    @load="handleLoad"
+                />
             </a>
         </div>
         <p class="text-xs">위에 이미지를 클릭해서 다운로드 받을 수 있어</p>
@@ -31,6 +35,7 @@
 </template>
 
 <script setup>
+import confetti from "canvas-confetti";
 import { storeToRefs } from "pinia";
 import { dbStore, userStore, snackbarStore } from "~/stores";
 
@@ -55,6 +60,14 @@ function handleSend() {
     });
 
     router.replace("/");
+}
+
+function handleLoad() {
+    confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+    });
 }
 
 onMounted(() => {
