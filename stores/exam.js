@@ -127,8 +127,8 @@ export const examStore = defineStore("exam", {
         getConfig: (state) => state.config,
     },
     actions: {
-        nextStep() {
-            this.step = this.step + 1;
+        setStep(step) {
+            this.step = step;
         },
         setAnswer(step, order, choice) {
             this.config[step][order].choice = choice;

@@ -1,5 +1,7 @@
 <template>
-    <div class="exam-header-container w-full flex items-center justify-center">
+    <div
+        class="exam-header-container w-full flex items-center justify-center py-2"
+    >
         <ul class="flex items-center justify-center gap-x-10 relative">
             <li
                 v-for="(_, index) in config"
