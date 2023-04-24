@@ -14,7 +14,7 @@
 
 <script setup>
 import { storeToRefs } from "pinia";
-import { examStore, userStore } from "~/stores";
+import { examStore, userStore, dbStore } from "~/stores";
 
 const exam = examStore();
 const { config } = storeToRefs(exam);
@@ -22,6 +22,8 @@ const { config } = storeToRefs(exam);
 const score = ref();
 
 const user = userStore();
+
+const db = dbStore();
 
 const router = useRouter();
 
@@ -33,6 +35,8 @@ onMounted(() => {
         .filter((answer) => answer);
 
     score.value = Math.round((answers.length / arr.length) * 100);
+
+    db.updateDB("score", score.value);
 });
 
 function handlePick() {
