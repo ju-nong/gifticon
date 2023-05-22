@@ -3,7 +3,7 @@
     <ul class="list-container">
         <li>
             <strong>문제는 이준용 맘대로</strong>
-            <span>진짜 나 맘대로 문제 냈음 ㅅㄱ</span>
+            <span>진짜 내 맘대로 문제 냈음 ㅅㄱ</span>
         </li>
         <li>
             <strong>문제 유형</strong>
