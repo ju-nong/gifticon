@@ -3,14 +3,14 @@
     <div class="form-container flex flex-col p-2 mt-2">
         <label>
             <p>이름</p>
-            <input type="text" placeholder="너 이름" v-model.trim="vName" />
+            <input type="text" placeholder="너 이름" v-model.trim="$name" />
         </label>
         <label>
             <p>생년월일</p>
             <input
                 type="text"
                 placeholder="YYMMDD"
-                v-model.trim="vDate"
+                v-model.trim="$birthday"
                 @keyup.enter="handleUse"
             />
         </label>
@@ -21,7 +21,7 @@
 </template>
 
 <script setup>
-import { userStore, dbStore, snackbarStore } from "~/stores";
+import { userStore, dbStore, snackbarStore, adminStore } from "~/stores";
 import { storeToRefs } from "pinia";
 import { getFirestore, collection, doc, updateDoc } from "@firebase/firestore";
 import { useDocument } from "vuefire";
@@ -34,24 +34,43 @@ const { login } = storeToRefs(user);
 const db = dbStore();
 const { getData: data } = storeToRefs(db);
 
-const vName = ref();
-const vDate = ref();
+const admin = adminStore();
+const { getData: adminData } = storeToRefs(admin);
+
+const $name = ref();
+const $birthday = ref();
 
 const snackbar = snackbarStore();
 
-const checkEmpty = computed(() => !vName.value?.length || !vDate.value?.length);
-
 function checkData() {
-    if (checkEmpty.value) {
+    const [inputName, inputBirthday] = [$name.value, $birthday.value];
+
+    console.log(inputName.length, inputBirthday.length);
+
+    // 이름이랑 생년월일을 입력했는지
+    if (!inputName.length || !inputBirthday.length) {
+        console.log("오잉");
         return {
             type: "danger",
             message: "이름이랑 생년월일 다 적어",
         };
     }
 
+    const { name: adminName, birthday: adminBirthday } = adminData.value; // admin 이름이랑 생년월일 가져오기
+
+    // 입력한 정보가 admin 정보인지
+    if (inputName === adminName && inputBirthday === adminBirthday) {
+        return {
+            type: "info",
+            message: "어 준용이 어서오고",
+        };
+    }
+
+    // 생일인 사람 정보 가져오기
     const { birthday, name, login } = data.value;
 
-    if (vName.value === name && vDate.value === birthday) {
+    //
+    if (inputName === name && inputBirthday === birthday) {
         if (!login) {
             return { type: "check", message: "🎉 와 생일 축하해! 🎉" };
         } else {
@@ -70,16 +89,18 @@ async function handleLogin() {
         message,
     });
 
-    if (type === "check") {
+    if (type !== "danger") {
         user.setLogin(true);
+    }
 
+    if (type === "check") {
         await db.updateDB("login", true);
 
         router.replace("/intro");
+    } else if (type === "info") {
+        router.replace("/admin");
     }
 }
-
-onMounted(() => {});
 </script>
 
 <style lang="scss">

@@ -28,6 +28,10 @@ const config = reactive({
         icon: "ph:warning-circle-fill",
         color: "bg-red-400",
     },
+    info: {
+        icon: "material-symbols:info-rounded",
+        color: "bg-blue-500",
+    },
 });
 
 onMounted(() => {
