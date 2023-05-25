@@ -11,7 +11,7 @@
                 type="text"
                 placeholder="YYMMDD"
                 v-model.trim="$birthday"
-                @keyup.enter="handleUse"
+                @keyup.enter="handleLogin"
             />
         </label>
         <button class="primary-button mt-2" @click="handleLogin">
