@@ -37,8 +37,8 @@ const { getData: data } = storeToRefs(db);
 const admin = adminStore();
 const { getData: adminData } = storeToRefs(admin);
 
-const $name = ref();
-const $birthday = ref();
+const $name = ref("");
+const $birthday = ref("");
 
 const snackbar = snackbarStore();
 
