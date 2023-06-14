@@ -1,6 +1,4 @@
 import { userStore, pageStore } from "~/stores";
-import { getFirestore, collection, doc, updateDoc } from "@firebase/firestore";
-import { useDocument } from "vuefire";
 
 export default defineNuxtRouteMiddleware((to) => {
     const user = userStore();
