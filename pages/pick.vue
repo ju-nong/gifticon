@@ -2,16 +2,15 @@
     <h1 class="title">와 축하해!</h1>
     <div class="pick-container text-center">
         <div class="p-4">
-            <a
-                :href="`/images/${data?.list[pick]}`"
-                download="준용이의생일선물"
-            >
-                <img
-                    :src="`/images/${data?.list[pick]}`"
-                    alt="기프티콘"
-                    @load="handleLoad"
-                />
-            </a>
+            <img
+                v-show="load"
+                :src="url"
+                alt="기프티콘"
+                class="cursor-pointer"
+                @load="handleLoad"
+                @click="handleDownload"
+            />
+            <span v-if="!load" class="loader"></span>
         </div>
         <p class="text-xs">위에 이미지를 클릭해서 다운로드 받을 수 있어</p>
         <h2 class="pb-2 pt-4 font-semibold">와 생일 축하해!</h2>
@@ -35,6 +34,8 @@
 import confetti from "canvas-confetti";
 import { storeToRefs } from "pinia";
 import { dbStore, userStore, snackbarStore } from "~/stores";
+import { ref as storageRef } from "firebase/storage";
+import { useFirebaseStorage, useStorageFileUrl } from "vuefire";
 
 const router = useRouter();
 
@@ -44,9 +45,14 @@ const { data } = storeToRefs(db);
 const user = userStore();
 const { pick } = storeToRefs(user);
 
-const snackbar = snackbarStore();
+const storage = useFirebaseStorage();
+const image = storageRef(storage, `${data.value.list[pick.value]}`);
+const { url, promise } = useStorageFileUrl(image);
 
+const load = ref(false);
 const message = ref();
+
+const snackbar = snackbarStore();
 
 function handleSend() {
     db.updateDB("message", message.value);
@@ -60,11 +66,28 @@ function handleSend() {
 }
 
 function handleLoad() {
+    load.value = true;
     confetti({
         particleCount: 100,
         spread: 70,
         origin: { y: 0.6 },
     });
+}
+
+async function handleDownload() {
+    const response = await fetch(url.value);
+    const blob = await response.blob();
+
+    const url2 = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+
+    a.style.display = "none";
+    a.href = url2;
+    a.download = "image.png";
+
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url2);
 }
 
 onMounted(() => {
