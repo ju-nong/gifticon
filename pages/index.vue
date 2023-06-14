@@ -8,10 +8,12 @@
         <label>
             <p>생년월일</p>
             <input
-                type="text"
+                type="tel"
                 placeholder="YYMMDD"
+                maxlength="6"
                 v-model.trim="$birthday"
                 @keyup.enter="handleLogin"
+                @input="validateBirthday"
             />
         </label>
         <button class="primary-button mt-2" @click="handleLogin">
@@ -42,14 +44,15 @@ const $birthday = ref("");
 
 const snackbar = snackbarStore();
 
+function validateBirthday() {
+    $birthday.value = $birthday.value.replaceAll(/[^\d]/g, "").trim();
+}
+
 function checkData() {
     const [inputName, inputBirthday] = [$name.value, $birthday.value];
 
-    console.log(inputName.length, inputBirthday.length);
-
     // 이름이랑 생년월일을 입력했는지
     if (!inputName.length || !inputBirthday.length) {
-        console.log("오잉");
         return {
             type: "danger",
             message: "이름이랑 생년월일 다 적어",
