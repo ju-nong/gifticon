@@ -3,16 +3,24 @@
         <Title>생일선물 뽑기</Title>
         <Meta name="theme-color" content="rgb(26 136 233)" />
         <Meta name="description" content="이준용이 주는 생일선물!" />
+        <Meta name="author" content="이준용" />
         <Meta
             name="keywords"
             content="이준용, 오아리, 생일선물, 기프티콘, gifticon"
         />
-        <Meta name="author" content="이준용" />
-        <Meta content="생일선물 뽑기" property="og:title" />
-        <Meta content="/ari.png" property="og:image" />
-        <Meta content="website" property="og:type" />
-        <Meta content="choose-gifticon.vercel.app" property="og:site_name" />
-        <Meta content="//choose-gifticon.vercel.app/" property="og:url" />
+        <Meta property="og:type" content="website" />
+        <Meta property="og:title" content="생일선물 뽑기" />
+        <Meta property="og:description" content="이준용이 주는 생일선물!" />
+        <Meta property="og:locale" content="ko_KR" />
+        <Meta property="og:url" content="https://choose-gifticon.vercel.app/" />
+        <Meta property="og:image" content="/ari.png" />
+        <Meta property="og:site_name" content="생일선물 뽑기" />
+
+        <Meta name="twitter:card" content="summary_large_image" />
+        <Meta name="twitter:title" content="생일선물 뽑기" />
+        <Meta name="twitter:description" content="이준용이 주는 생일선물!" />
+        <Meta name="twitter:image" content="/ari.png" />
+
         <Link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
     </Head>
     <SnackbarContainer />
@@ -30,6 +38,7 @@
             <slot v-else />
         </div>
     </main>
+
     <Copyright />
 </template>
 
