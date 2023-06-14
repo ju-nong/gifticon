@@ -45,7 +45,7 @@ const $birthday = ref("");
 const snackbar = snackbarStore();
 
 function validateBirthday() {
-    $birthday.value = $birthday.value.replaceAll(/[^\d]/g, "").trim();
+    $birthday.value = $birthday.value.replaceAll(/[^\d]/g, "");
 }
 
 function checkData() {
