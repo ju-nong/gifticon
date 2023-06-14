@@ -25,8 +25,6 @@
 <script setup>
 import { userStore, dbStore, snackbarStore, adminStore } from "~/stores";
 import { storeToRefs } from "pinia";
-import { getFirestore, collection, doc, updateDoc } from "@firebase/firestore";
-import { useDocument } from "vuefire";
 
 const router = useRouter();
 
