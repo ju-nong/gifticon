@@ -4,11 +4,12 @@
     </NuxtLayout>
 </template>
 <script setup>
+import { pageStore, dbStore, snackbarStore, adminStore } from "~/stores";
+import { storeToRefs } from "pinia";
+
 definePageMeta({
     middleware: "check",
 });
-import { pageStore, dbStore, snackbarStore, adminStore } from "~/stores";
-import { storeToRefs } from "pinia";
 
 const router = useRouter();
 

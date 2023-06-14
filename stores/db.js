@@ -15,7 +15,7 @@ export const dbStore = defineStore("db", {
             this.db = getFirestore();
             this.docs = doc(
                 collection(this.db, "gifticon"),
-                "aE9hnKqUPt5bp757ycQg"
+                "aE9hnKqUPt5bp757ycQg",
             );
             this.data = useDocument(this.docs);
         },
