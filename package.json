@@ -15,7 +15,7 @@
         "@firebase/app-types": "^0.9.0",
         "@morev/vue-transitions": "^2.3.6",
         "@nuxtjs/google-fonts": "^3.0.0",
-        "@nuxtjs/tailwindcss": "^6.6.6",
+        "@nuxtjs/tailwindcss": "^6.7.2",
         "@pinia/nuxt": "^0.4.8",
         "@vue/composition-api": "^1.7.1",
         "canvas-confetti": "^1.6.0",

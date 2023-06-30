@@ -21,7 +21,7 @@
         </li>
         <li>
             <strong>기회는 한 번이야!</strong>
-            <span>생일선물을 여러 개 받을 순 없잖아?</span>
+            <span>생일선물을 여러 개 받을 순 없잖아? </span>
         </li>
         <li>
             <NuxtLink class="primary-button" to="/choose" replace>

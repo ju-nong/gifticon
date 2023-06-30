@@ -17,8 +17,10 @@
             <strong>주의할 점</strong>
             <span
                 >다른 페이지나 앱 열어서 컨닝하면 Session 날라가서 바로 종료 될
-                수 있음</span
-            >
+                수 있음
+                <br />
+                <strike>예외처리 안함, 제출 누락돼도 난 모름!</strike>
+            </span>
         </li>
         <li>
             <NuxtLink class="primary-button" to="/exam/1" replace>

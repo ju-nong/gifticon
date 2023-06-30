@@ -6,10 +6,10 @@ export const examStore = defineStore("exam", {
                 {
                     question: "1. 나는 어디서 태어났을까?",
                     examples: [
-                        "대전광역시 유성구",
-                        "충청북도 청주시",
-                        "충청남도 공주시",
-                        "충청북도 충주시",
+                        "충청북도 청주시 서원구",
+                        "충청북도 청주시 흥덕구",
+                        "충청남도 청주시 상당구 ",
+                        "충청북도 청주시 청원구",
                     ],
                     answer: 1,
                     choice: -1,
@@ -50,14 +50,19 @@ export const examStore = defineStore("exam", {
             ],
             [
                 {
-                    question: "5. 내가 다니는 회사는?",
-                    examples: ["테슬라", "지뉴소프트", "엔비디아", "누아"],
+                    question: "5. 내가 가장 좋아하는 고기는?",
+                    examples: ["닭", "돼지", "소", "양"],
                     answer: 1,
                     choice: -1,
                 },
                 {
-                    question: "6. 내가 가장 좋아하는 취미는?",
-                    examples: ["영화 감상", "코딩", "낮잠", "아리 만지기"],
+                    question: "6. 내가 졸업한 고등학교는?",
+                    examples: [
+                        "충북반도체고등학교",
+                        "청주공업고등학교",
+                        "충주고등학교",
+                        "충북공업고등학교",
+                    ],
                     answer: 3,
                     choice: -1,
                 },
@@ -74,27 +79,28 @@ export const examStore = defineStore("exam", {
                 },
                 {
                     question: "8. 공부할 때 내가 듣는 음악 스타일은?",
-                    examples: ["빠른 템포", "클래식", "발라드", "재즈"],
+                    examples: ["힙합", "K-POP", "발라드", "클래식"],
                     answer: 0,
                     choice: -1,
                 },
             ],
             [
                 {
-                    question: "9. 내 꿈은?",
-                    examples: ["대통령", "CEO", "돈 많은 백수", "영어강사"],
+                    question: "9. 현재 내가 사용하고 있는 키보드의 축은?",
+                    examples: ["청축", "갈축", "펜타그래프", "흑축"],
                     answer: 2,
                     choice: -1,
                 },
                 {
-                    question: "10. 내가 가장 좋아하는 동물은?",
-                    examples: ["강아지", "갈매기", "고양이", "앵무새"],
+                    question:
+                        "10. 다음생에 태어난다면 난 뭐로 태어나고 싶어할까?",
+                    examples: ["인간", "갈매기", "호랑이", "고양이"],
                     answer: 1,
                     choice: -1,
                 },
                 {
-                    question: "11. 내가 쉬는 날에 가장 많이하는 활동은?",
-                    examples: ["여행", "쇼핑", "영화 관람", "게임"],
+                    question: "11. 내 생에 최대의 몸무게는?",
+                    examples: ["111kg", "117kg", "122kg", "127kg"],
                     answer: 3,
                     choice: -1,
                 },
@@ -102,9 +108,9 @@ export const examStore = defineStore("exam", {
                     question: "12. 내가 마지막으로 본 영화는?",
                     examples: [
                         "존 윅 4",
-                        "스즈메의 문단속",
-                        "인셉션",
-                        "가디언즈 오브 갤럭시 2",
+                        "슈퍼 마리오 브라더스",
+                        "범죄도시3",
+                        "가디언즈 오브 갤럭시 3",
                     ],
                     answer: 2,
                     choice: -1,

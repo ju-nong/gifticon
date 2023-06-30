@@ -1,7 +1,7 @@
 export const pageStore = defineStore("page", {
     state: () => ({
         block: false,
-        load: false,
+        load: true,
     }),
     getters: {
         getBlock: (state) => state.block,

@@ -46,7 +46,7 @@ const user = userStore();
 const { pick } = storeToRefs(user);
 
 const storage = useFirebaseStorage();
-const image = storageRef(storage, `${data.value.list[pick.value]}`);
+const image = storageRef(storage, `${data.value?.list[pick.value]}`);
 const { url, promise } = useStorageFileUrl(image);
 
 const load = ref(false);
