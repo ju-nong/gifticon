@@ -33,7 +33,7 @@
 <script setup>
 import confetti from "canvas-confetti";
 import { storeToRefs } from "pinia";
-import { dbStore, userStore, snackbarStore } from "~/stores";
+import { dbStore, userStore, snackbarStore, boardStore } from "~/stores";
 import { ref as storageRef } from "firebase/storage";
 import { useFirebaseStorage, useStorageFileUrl } from "vuefire";
 
@@ -45,6 +45,8 @@ const { data } = storeToRefs(db);
 const user = userStore();
 const { pick } = storeToRefs(user);
 
+const board = boardStore();
+
 const storage = useFirebaseStorage();
 const image = storageRef(storage, `${data.value?.list[pick.value]}`);
 const { url, promise } = useStorageFileUrl(image);
@@ -55,7 +57,15 @@ const message = ref();
 const snackbar = snackbarStore();
 
 function handleSend() {
-    db.updateDB("message", message.value);
+    const { birthday, list, name, score } = data.value;
+
+    board.updateBoard({
+        birthday: birthday,
+        content: message.value,
+        gift: list[pick.value],
+        name: name,
+        score: score,
+    });
 
     snackbar.addSnackbar({
         type: "check",
