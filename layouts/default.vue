@@ -25,7 +25,9 @@
     </Head>
     <SnackbarContainer />
     <Modal />
-    <main class="w-full h-full flex justify-center items-center p-[10rem]">
+    <main
+        class="w-full h-full flex justify-center items-center p-[10rem] flex-col"
+    >
         <div
             class="card-container w-full min-w-[300px] max-w-[500px] h-auto p-6"
         >
@@ -37,6 +39,13 @@
             </div>
             <slot v-else />
         </div>
+        <NuxtLink
+            v-if="route.name === 'index'"
+            to="/board"
+            class="text-sm mt-4 relative"
+            >다녀갔던 사람들
+            <span class="absolute click-btn">👈</span>
+        </NuxtLink>
     </main>
 
     <Copyright />
@@ -50,6 +59,7 @@ const page = pageStore();
 const { load } = storeToRefs(page);
 
 const router = useRouter();
+const route = useRoute();
 
 watch(load, (to, from) => {
     if (!from && to) {
@@ -65,5 +75,23 @@ watch(load, (to, from) => {
     main {
         padding: 6rem !important;
     }
+}
+
+@keyframes ClickMe {
+    0% {
+        transform: translateX(15px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    100% {
+        transform: translateX(15px);
+    }
+}
+
+.click-btn {
+    animation: ClickMe;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
 }
 </style>

@@ -6,7 +6,7 @@ export default defineNuxtRouteMiddleware((to) => {
 
     page.toggleLoad();
 
-    if (to.name !== "index") {
+    if (to.name !== "index" && to.name !== "board") {
         if (!user.getLogin) {
             // 메인 페이지가 아니면서 현재 잘못된 접근일 경우
             page.setBlock(true); // 잘못된 접근 Flag 변수를 True로 변경
