@@ -62,9 +62,10 @@ function handleSend() {
     board.updateBoard({
         birthday: birthday,
         content: message.value,
-        gift: list[pick.value],
         name: name,
         score: score,
+        url: url.value,
+        pick: pick.value,
     });
 
     snackbar.addSnackbar({

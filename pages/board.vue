@@ -16,14 +16,14 @@
         :key="load"
     >
         <div v-for="(item, index) in boards" :key="index">
-            <span>{{ index + 1 }}</span>
+            <h2>{{ index + 1 }}. {{ item.name }} {{ item.birthday }}</h2>
             <h2>
-                {{ item.name }} {{ item.birthday }}
-                <span>{{
-                    item.score === -1 ? "랜덤" : `시험 ${item.score}점`
-                }}</span>
+                {{ item.score === -1 ? "랜덤" : `시험 ${item.score}점` }}
+                <span>등급 : {{ config[item.pick] }}</span>
             </h2>
             <img :src="item.url" alt="" />
+
+            <!-- <img :src="item.url" alt="" /> -->
             <p>{{ item.content }}</p>
         </div>
     </div>
@@ -41,7 +41,8 @@ const { getData: data } = storeToRefs(board);
 const boards = ref(data.value.item);
 const storage = useFirebaseStorage();
 
-const load = ref(false);
+const load = ref(true);
+const config = reactive(["하", "중", "상"]);
 
 async function getImages() {
     for (let i = 0; i < boards.value.length; i++) {
@@ -57,7 +58,7 @@ async function getImages() {
 }
 
 onBeforeMount(() => {
-    getImages();
+    // getImages();
 });
 </script>
 
@@ -77,16 +78,16 @@ onBeforeMount(() => {
             transform: translateY(-5px);
         }
 
-        > span {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            color: #3e7def;
-            font-size: 1.25rem;
-            font-weight: bold;
-        }
-
         > h2 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            > span {
+                color: #3e7def;
+                font-size: 1.05rem;
+                font-weight: bold;
+            }
         }
 
         > img {
