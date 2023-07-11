@@ -15,8 +15,8 @@
         <p class="text-xs">위에 이미지를 클릭해서 다운로드 받을 수 있어</p>
         <h2 class="pb-2 pt-4 font-semibold">와 생일 축하해!</h2>
         <p class="py-2 font-light text-sm">
-            위에 이미지를 이준용한테 전달하고 <br />
-            다음 기회는 1년 뒤니까 할 말 있으면 밑에다가 적도록
+            할 말 있으면 밑에다가 적도록 <br />
+            어 1년 뒤에 보자
         </p>
         <textarea
             v-model="message"

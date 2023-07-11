@@ -185,14 +185,21 @@ function reCheckModal2() {
 }
 
 function reCheckModal1() {
-    modal.setModal(
-        {
-            name: "material-symbols:check-circle-rounded",
-            color: "#52de47",
-        },
-        "진짜 선택한다?",
-        reCheckModal2,
-    );
+    snackbar.addSnackbar({
+        type: "info",
+        message: "아 근데 너는 시험 푸는게 낫겠다",
+    });
+
+    router.replace("/description");
+
+    // modal.setModal(
+    //     {
+    //         name: "material-symbols:check-circle-rounded",
+    //         color: "#52de47",
+    //     },
+    //     "진짜 선택한다?",
+    //     reCheckModal2,
+    // );
 }
 
 function handlePick() {
