@@ -14,7 +14,9 @@
             </button>
         </div>
         <div class="admin-container-main relative z-[1] p-[8px]">
-            <component :is="activeComponent" />
+            <KeepAlive>
+                <component :is="activeComponent" />
+            </KeepAlive>
         </div>
     </div>
 </template>
