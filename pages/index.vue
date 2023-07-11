@@ -99,7 +99,7 @@ async function handleLogin() {
 
         router.replace("/intro");
     } else if (type === "info") {
-        router.replace("/admin");
+        router.push("/admin");
     }
 }
 </script>
