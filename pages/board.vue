@@ -3,7 +3,11 @@
         방명록
 
         <NuxtLink to="/">
-            <Icon name="ic:round-home" size="1.5rem" />
+            <Icon
+                name="ic:round-home"
+                size="1.5rem"
+                color="rgb(26, 136, 233)"
+            />
         </NuxtLink>
     </h1>
     <div
@@ -51,16 +55,6 @@ async function getImages() {
 
     load.value = true;
 }
-
-// async function handleTest() {
-//     board.updateBoard({
-//         birthday: "011109",
-//         content: "안녕하세요",
-//         gift: "383a267d08e55bc1b4c91ad8c7d95ade876db5c4eae32caf0b2999f79ec99592.png",
-//         name: "이준용",
-//         score: 100,
-//     });
-// }
 
 onBeforeMount(() => {
     getImages();
