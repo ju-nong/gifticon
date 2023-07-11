@@ -5,6 +5,7 @@ import { pageStore } from "./page";
 import { modalStore } from "./modal";
 import { examStore } from "./exam";
 import { adminStore } from "./admin";
+import { boardStore } from "./board";
 
 export {
     userStore,
@@ -14,4 +15,5 @@ export {
     modalStore,
     examStore,
     adminStore,
+    boardStore,
 };

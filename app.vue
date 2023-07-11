@@ -8,13 +8,20 @@ definePageMeta({
     middleware: "check",
 });
 
-import { pageStore, dbStore, snackbarStore, adminStore } from "~/stores";
+import {
+    pageStore,
+    dbStore,
+    snackbarStore,
+    adminStore,
+    boardStore,
+} from "~/stores";
 import { storeToRefs } from "pinia";
 
 const router = useRouter();
 
 const db = dbStore();
 const admin = adminStore();
+const board = boardStore();
 
 const page = pageStore();
 const { block } = storeToRefs(page);
@@ -42,6 +49,7 @@ watch(block, (to, from) => {
 onMounted(() => {
     db.setDB();
     admin.setAdmin();
+    board.setBoard();
 
     if (block.value) {
         addDangerSnackbar();
