@@ -1,3 +1,6 @@
+import { getFirestore, collection, doc, updateDoc } from "@firebase/firestore";
+import { useDocument } from "vuefire";
+
 export const examStore = defineStore("exam", {
     state: () => ({
         step: 0,
@@ -8,7 +11,7 @@ export const examStore = defineStore("exam", {
                     examples: [
                         "충청북도 청주시 서원구",
                         "충청북도 청주시 흥덕구",
-                        "충청남도 청주시 상당구 ",
+                        "충청남도 청주시 상당구",
                         "충청북도 청주시 청원구",
                     ],
                     answer: 1,
@@ -118,6 +121,9 @@ export const examStore = defineStore("exam", {
             ],
         ],
         score: -1,
+        db: null,
+        docs: null,
+        data: null,
     }),
     getters: {
         getStep: (state) => state.step,
@@ -129,6 +135,17 @@ export const examStore = defineStore("exam", {
         },
         setAnswer(step, order, choice) {
             this.config[step][order].choice = choice;
+        },
+        setExam() {
+            this.db = getFirestore();
+            this.docs = doc(
+                collection(this.db, "exam"),
+                "cM3en4qB8GywrJbY0Nrf",
+            );
+            this.data = useDocument(this.docs);
+        },
+        async updateDB(key, value) {
+            await updateDoc(this.docs, { [key]: value });
         },
     },
 });

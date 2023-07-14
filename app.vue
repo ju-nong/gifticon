@@ -14,6 +14,7 @@ import {
     snackbarStore,
     adminStore,
     boardStore,
+    examStore,
 } from "~/stores";
 import { storeToRefs } from "pinia";
 
@@ -27,6 +28,9 @@ const page = pageStore();
 const { block } = storeToRefs(page);
 
 const snackbar = snackbarStore();
+
+const exam = examStore();
+const { data } = storeToRefs(exam);
 
 function addDangerSnackbar() {
     snackbar.addSnackbar({
@@ -50,6 +54,7 @@ onMounted(() => {
     db.setDB();
     admin.setAdmin();
     board.setBoard();
+    exam.setExam();
 
     if (block.value) {
         addDangerSnackbar();

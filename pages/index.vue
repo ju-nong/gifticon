@@ -37,10 +37,10 @@ const { getData: data } = storeToRefs(db);
 const admin = adminStore();
 const { getData: adminData } = storeToRefs(admin);
 
+const snackbar = snackbarStore();
+
 const $name = ref("");
 const $birthday = ref("");
-
-const snackbar = snackbarStore();
 
 function validateBirthday() {
     $birthday.value = $birthday.value.replaceAll(/[^\d]/g, "");
