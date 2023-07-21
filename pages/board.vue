@@ -27,6 +27,9 @@
             <p>{{ item.content }}</p>
         </div>
     </div>
+    <div v-else class="flex justify-center items-center min-h-[400px]">
+        <span class="loader"></span>
+    </div>
 </template>
 
 <script setup>
@@ -36,30 +39,44 @@ import { useFirebaseStorage, useStorageFileUrl } from "vuefire";
 import { ref as storageRef } from "firebase/storage";
 
 const board = boardStore();
-const { getData: data } = storeToRefs(board);
+const { data } = storeToRefs(board);
 
-const boards = ref(data.value.item);
+const boards = ref(data.value?.item);
 const storage = useFirebaseStorage();
 
-const load = ref(true);
+const load = ref(false);
 const config = reactive(["하", "중", "상"]);
 
-async function getImages() {
-    for (let i = 0; i < boards.value.length; i++) {
-        const image = storageRef(storage, boards.value[i].gift);
-        const { url, promise } = useStorageFileUrl(image);
+function updateBoard() {
+    board.setBoard();
 
-        await promise.value;
-
-        boards.value[i].url = await url.value;
-    }
-
-    load.value = true;
+    setTimeout(() => {
+        boards.value = board.getData?.item ?? [];
+        load.value = true;
+    }, 2000);
 }
 
 onBeforeMount(() => {
-    // getImages();
+    if (!data.value?.item.length) {
+        updateBoard();
+    } else {
+        load.value = true;
+    }
 });
+
+// 스토리지 이미지 가져오는 함수
+// async function getImages() {
+//     for (let i = 0; i < boards.value.length; i++) {
+//         const image = storageRef(storage, boards.value[i].gift);
+//         const { url, promise } = useStorageFileUrl(image);
+
+//         await promise.value;
+
+//         boards.value[i].url = await url.value;
+//     }
+
+//     load.value = true;
+// }
 </script>
 
 <style lang="scss">
