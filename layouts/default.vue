@@ -68,6 +68,12 @@ watch(load, (to, from) => {
         }, 500);
     }
 });
+
+onBeforeMount(() => {
+    if (load.value) {
+        page.toggleLoad();
+    }
+});
 </script>
 
 <style lang="scss">
