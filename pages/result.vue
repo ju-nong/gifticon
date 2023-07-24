@@ -17,7 +17,7 @@ import { storeToRefs } from "pinia";
 import { examStore, userStore, dbStore } from "~/stores";
 
 const exam = examStore();
-const { config } = storeToRefs(exam);
+const { data } = storeToRefs(exam);
 
 const score = ref();
 
@@ -26,18 +26,6 @@ const user = userStore();
 const db = dbStore();
 
 const router = useRouter();
-
-onMounted(() => {
-    const arr = [].concat(...config.value);
-
-    const answers = arr
-        .map((item) => item.answer === item.choice)
-        .filter((answer) => answer);
-
-    score.value = Math.round((answers.length / arr.length) * 100);
-
-    db.updateDB("score", score.value);
-});
 
 function handlePick() {
     const cloneScore = score.value;
@@ -52,6 +40,23 @@ function handlePick() {
 
     router.replace("/pick");
 }
+
+onBeforeMount(() => {
+    const examples = data.value.item;
+    let answerCount = 0;
+
+    for (let i = 0; i < examples.length; i++) {
+        const { answer, choice } = examples[i];
+
+        if (answer === choice) {
+            answerCount++;
+        }
+    }
+
+    score.value = Math.round((answerCount / examples.length) * 100);
+    db.updateDB("score", score.value);
+    exam.updateDB("item", examples);
+});
 </script>
 
 <style lang="scss"></style>

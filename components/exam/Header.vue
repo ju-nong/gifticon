@@ -4,7 +4,7 @@
     >
         <ul class="flex items-center justify-center gap-x-10 relative">
             <li
-                v-for="(_, index) in config"
+                v-for="(_, index) in 3"
                 :key="index"
                 class="font-semibold text-center"
                 :class="index === step ? 'active' : ''"
@@ -20,7 +20,7 @@ import { storeToRefs } from "pinia";
 import { examStore } from "~/stores";
 
 const exam = examStore();
-const { step, config } = storeToRefs(exam);
+const { step } = storeToRefs(exam);
 </script>
 
 <style lang="scss">

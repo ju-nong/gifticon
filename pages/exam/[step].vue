@@ -1,7 +1,10 @@
 <template>
     <ExamHeader />
     <ul class="question-container flex flex-col gap-y-8 py-6">
-        <li v-for="(item, index) in config[step]" :key="index">
+        <li
+            v-for="(item, index) in data.item.slice(step * 4, (step + 1) * 4)"
+            :key="index"
+        >
             <p>{{ item.question }}</p>
             <ul class="flex flex-col gap-y-2 pt-2">
                 <li
@@ -11,7 +14,7 @@
                 >
                     <button
                         class="text-sm"
-                        @click="choice(index, exampleIndex)"
+                        @click="handleSetChoice(index, exampleIndex)"
                     >
                         <Icon
                             :name="
@@ -28,13 +31,19 @@
         </li>
     </ul>
     <button
-        v-if="step === config.length - 1"
+        v-if="step === 2"
         class="primary-button"
         @click="router.replace('/result')"
     >
         제출
     </button>
-    <button v-else class="primary-button" @click="nextStep">다음</button>
+    <button
+        v-else
+        class="primary-button"
+        @click="router.replace(`/exam/${step + 2}`)"
+    >
+        다음
+    </button>
 </template>
 
 <script setup>
@@ -42,20 +51,16 @@ import { storeToRefs } from "pinia";
 import { examStore } from "~/stores";
 
 const exam = examStore();
-const { step, config } = storeToRefs(exam);
+const { step, data } = storeToRefs(exam);
 
 const router = useRouter();
 const route = useRoute();
 
-function choice(question, example) {
-    exam.setAnswer(step.value, question, example);
-}
-
-function nextStep() {
-    router.replace(`/exam/${step.value + 2}`);
-}
+const handleSetChoice = (index, choice) =>
+    exam.setChoice(step.value * 4 + index, choice);
 
 onMounted(() => {
+    console.log(route.params.step);
     exam.setStep(route.params.step - 1);
 });
 </script>

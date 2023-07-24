@@ -1,12 +1,14 @@
 <template>
     <div class="admin-container-main-exam">
         <ul>
-            <AdminExamItem
-                v-for="(exam, index) in data.item"
-                :key="index"
-                :exam="exam"
-                :index="index"
-            />
+            <li v-for="(exam, index) in data.item">
+                <AdminExamItem
+                    :key="index"
+                    :exam="exam"
+                    :index="index"
+                    @handleUpdateExam="handleUpdateExam"
+                />
+            </li>
         </ul>
     </div>
 </template>
@@ -17,6 +19,12 @@ import { storeToRefs } from "pinia";
 
 const exam = examStore();
 const { data } = storeToRefs(exam);
+
+function handleUpdateExam({ index, config }) {
+    data.value.item[index] = { choice: -1, ...config };
+
+    exam.updateDB("item", data.value.item);
+}
 </script>
 
 <style lang="scss">
@@ -31,6 +39,11 @@ const { data } = storeToRefs(exam);
 
             &:not(&:first-child) {
                 padding-top: 0.5rem;
+            }
+
+            .exam-input {
+                display: inline;
+                outline: none;
             }
 
             > h1 {
