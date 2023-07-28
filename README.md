@@ -1,4 +1,4 @@
-# Gifticon
+# Birthday Gift Generator.
 
 여기서 전반적인 프로젝트의 문서나 순서를 볼 수 있어요 [Notion](https://iiiuooyoo.notion.site/Gifticon-45a9ed525db8496db4f8ddcdd1409ab5)
 
