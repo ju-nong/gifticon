@@ -6,13 +6,16 @@
         <Meta name="author" content="이준용" />
         <Meta
             name="keywords"
-            content="이준용, 오아리, 생일선물, 기프티콘, gifticon"
+            content="이준용, 오아리, 생일선물, birthday, gift, birthday gift, generator"
         />
         <Meta property="og:type" content="website" />
         <Meta property="og:title" content="생일선물 뽑기" />
         <Meta property="og:description" content="이준용이 주는 생일선물!" />
         <Meta property="og:locale" content="ko_KR" />
-        <Meta property="og:url" content="https://choose-gifticon.vercel.app/" />
+        <Meta
+            property="og:url"
+            content="https://birthday-gift-generator.vercel.app/"
+        />
         <Meta property="og:image" content="/ari.png" />
         <Meta property="og:site_name" content="생일선물 뽑기" />
 
