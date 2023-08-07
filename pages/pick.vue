@@ -33,7 +33,7 @@
 <script setup>
 import confetti from "canvas-confetti";
 import { storeToRefs } from "pinia";
-import { dbStore, userStore, snackbarStore, boardStore } from "~/stores";
+import { dbStore, userStore, toastStore, boardStore } from "~/stores";
 import { ref as storageRef } from "firebase/storage";
 import { useFirebaseStorage, useStorageFileUrl } from "vuefire";
 
@@ -54,7 +54,7 @@ const { url, promise } = useStorageFileUrl(image);
 const load = ref(false);
 const message = ref();
 
-const snackbar = snackbarStore();
+const toast = toastStore();
 
 function handleSend() {
     const { birthday, list, name, score } = data.value;
@@ -68,7 +68,7 @@ function handleSend() {
         pick: pick.value,
     });
 
-    snackbar.addSnackbar({
+    toast.addToast({
         type: "check",
         message: "메시지 전송 완료 안녕~",
     });

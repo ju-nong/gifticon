@@ -26,7 +26,7 @@
 
         <Link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
     </Head>
-    <SnackbarContainer />
+    <ToastContainer />
     <Modal />
     <main
         class="w-full h-full flex justify-center items-center p-[10rem] flex-col"

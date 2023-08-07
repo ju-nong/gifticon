@@ -1,6 +1,6 @@
 import { userStore } from "./user";
 import { dbStore } from "./db";
-import { snackbarStore } from "./snackbar";
+import { toastStore } from "./toast";
 import { pageStore } from "./page";
 import { modalStore } from "./modal";
 import { examStore } from "./exam";
@@ -10,7 +10,7 @@ import { boardStore } from "./board";
 export {
     userStore,
     dbStore,
-    snackbarStore,
+    toastStore,
     pageStore,
     modalStore,
     examStore,

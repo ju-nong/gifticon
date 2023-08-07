@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import { userStore, dbStore, snackbarStore, adminStore } from "~/stores";
+import { userStore, dbStore, toastStore, adminStore } from "~/stores";
 import { storeToRefs } from "pinia";
 
 const router = useRouter();
@@ -37,7 +37,7 @@ const { getData: data } = storeToRefs(db);
 const admin = adminStore();
 const { getData: adminData } = storeToRefs(admin);
 
-const snackbar = snackbarStore();
+const toast = toastStore();
 
 const $name = ref("");
 const $birthday = ref("");
@@ -85,7 +85,7 @@ function checkData() {
 async function handleLogin() {
     const { type, message } = checkData();
 
-    snackbar.addSnackbar({
+    toast.addToast({
         type,
         message,
     });

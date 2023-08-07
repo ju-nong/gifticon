@@ -11,7 +11,7 @@ definePageMeta({
 import {
     pageStore,
     dbStore,
-    snackbarStore,
+    toastStore,
     adminStore,
     boardStore,
     examStore,
@@ -27,13 +27,13 @@ const board = boardStore();
 const page = pageStore();
 const { block } = storeToRefs(page);
 
-const snackbar = snackbarStore();
+const toast = toastStore();
 
 const exam = examStore();
 const { data } = storeToRefs(exam);
 
-function addDangerSnackbar() {
-    snackbar.addSnackbar({
+function addDangerToast() {
+    toast.addToast({
         type: "danger",
         message: "응 못 뚫어",
     });
@@ -46,7 +46,7 @@ function addDangerSnackbar() {
 // 접근이 막혔을 때
 watch(block, (to, from) => {
     if (!from && to) {
-        addDangerSnackbar();
+        addDangerToast();
     }
 });
 
@@ -57,7 +57,7 @@ onMounted(() => {
     exam.setExam();
 
     if (block.value) {
-        addDangerSnackbar();
+        addDangerToast();
     }
 });
 </script>

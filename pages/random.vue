@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-import { snackbarStore, modalStore, userStore, dbStore } from "~/stores";
+import { toastStore, modalStore, userStore, dbStore } from "~/stores";
 import confetti from "canvas-confetti";
 import { storeToRefs } from "pinia";
 
@@ -42,7 +42,7 @@ const randomInterval = ref(false);
 const router = useRouter();
 
 const modal = modalStore();
-const snackbar = snackbarStore();
+const toast = toastStore();
 const user = userStore();
 const db = dbStore();
 const { data } = storeToRefs(db);
@@ -92,7 +92,7 @@ function getRandomNumbers() {
 
 function newList() {
     if (picking.value) {
-        snackbar.addSnackbar({
+        toast.addToast({
             type: "danger",
             message: "지금 랜덤 선택 중이잖아 🎰",
         });
@@ -185,7 +185,7 @@ function reCheckModal2() {
 }
 
 function reCheckModal1() {
-    // snackbar.addSnackbar({
+    // toast.addToast({
     //     type: "info",
     //     message: "아 근데 너는 시험 푸는게 낫겠다",
     // });
@@ -204,7 +204,7 @@ function reCheckModal1() {
 
 function handlePick() {
     if (picking.value) {
-        snackbar.addSnackbar({
+        toast.addToast({
             type: "danger",
             message: "지금 랜덤 선택 중이잖아 🎰",
         });
@@ -213,7 +213,7 @@ function handlePick() {
     }
 
     if (pick.value === -1) {
-        snackbar.addSnackbar({
+        toast.addToast({
             type: "danger",
             message: "생일선물 받기 싫지? 🎯",
         });
