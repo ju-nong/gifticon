@@ -21,16 +21,16 @@ const visible = ref(false);
 
 const config = reactive({
     check: {
-        icon: "material-symbols:check-circle-rounded",
         color: "bg-emerald-300",
+        icon: "material-symbols:check-circle-rounded",
     },
     danger: {
-        icon: "ph:warning-circle-fill",
         color: "bg-red-400",
+        icon: "ph:warning-circle-fill",
     },
     info: {
-        icon: "material-symbols:info-rounded",
         color: "bg-blue-500",
+        icon: "material-symbols:info-rounded",
     },
 });
 
