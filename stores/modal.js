@@ -9,12 +9,7 @@ export const modalStore = defineStore("mdoal", {
         buttonText: "확인",
         callback: null,
     }),
-    getters: {
-        getVisible: (state) => state.visible,
-        getIcon: (state) => state.icon,
-        getButtonText: (state) => state.buttonText,
-        getContent: (state) => state.content,
-    },
+    getters: {},
     actions: {
         show() {
             this.visible = true;

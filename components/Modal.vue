@@ -41,10 +41,6 @@ import { modalStore } from "~/stores";
 
 const modal = modalStore();
 const { visible, icon, content, buttonText } = storeToRefs(modal);
-
-function handleAccept() {
-    callback.value();
-}
 </script>
 
 <style lang="scss">
