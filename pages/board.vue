@@ -23,7 +23,6 @@
             </h2>
             <img :src="item.url" alt="" />
 
-            <!-- <img :src="item.url" alt="" /> -->
             <p>{{ item.content }}</p>
         </div>
     </div>

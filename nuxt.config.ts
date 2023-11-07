@@ -1,5 +1,17 @@
+const {
+    API_KEY,
+    AUTH_DOMAIN,
+    DATABASE_URL,
+    PROJECT_ID,
+    STORAGE_BUCKET,
+    MESSAGING_SENDER_ID,
+    APP_ID,
+    MEASUREMENT_ID,
+} = process.env;
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+    // runtimeConfig
     modules: [
         "@nuxtjs/tailwindcss",
         "nuxt-vuefire",
@@ -19,14 +31,14 @@ export default defineNuxtConfig({
     vuefire: {
         auth: true,
         config: {
-            apiKey: "AIzaSyDs6VbQvzrbg2fv6Wm-2qN_riLQbgIUqo0",
-            authDomain: "gifticon-55f87.firebaseapp.com",
-            databaseURL: "https://gifticon-55f87-default-rtdb.firebaseio.com",
-            projectId: "gifticon-55f87",
-            storageBucket: "gifticon-55f87.appspot.com",
-            messagingSenderId: "790530841582",
-            appId: "1:790530841582:web:2ab543f4f9ca088e824cff",
-            measurementId: "G-TZLQ37YLET",
+            apiKey: API_KEY,
+            authDomain: AUTH_DOMAIN,
+            databaseURL: DATABASE_URL,
+            projectId: PROJECT_ID,
+            storageBucket: STORAGE_BUCKET,
+            messagingSenderId: MESSAGING_SENDER_ID,
+            appId: APP_ID,
+            measurementId: MEASUREMENT_ID,
         },
     },
     pinia: {
